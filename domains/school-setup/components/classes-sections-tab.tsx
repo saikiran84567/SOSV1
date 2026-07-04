@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { GraduationCap, Users, User, Plus, Filter, Search } from 'lucide-react';
+import { GraduationCap, User, Plus, Filter, Search } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -91,11 +91,11 @@ export function ClassesSectionsTab() {
               ))}
             </SelectContent>
           </Select>
-          <Button variant="outline" size="sm" onClick={handleAdd}>
-            <Plus className="h-4 w-4 mr-1.5" />
-            Add
-          </Button>
         </div>
+        <Button variant="outline" size="sm" onClick={handleAdd} className="sm:ml-auto">
+          <Plus className="h-4 w-4 mr-1.5" />
+          Add Class
+        </Button>
       </div>
 
       {/* Classes accordion */}

@@ -63,7 +63,7 @@ export default function SchoolSetupPage() {
       accent: 'warning',
     },
     {
-      label: 'Total Capacity',
+      label: 'Class Capacity',
       value: totalCapacity.toLocaleString('en-IN'),
       change: 'Across all classes',
       trend: 'neutral',

@@ -1,9 +1,15 @@
 'use client';
 
-import { Building2, MapPin, Phone, Mail, Plus, User } from 'lucide-react';
+import { Building2, MapPin, Phone, Mail, Plus, User, MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ProgressBar } from './progress-bar';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { useToast } from '@/hooks/use-toast';
 import { campuses } from '@/domains/school-setup/mock-data/campuses';
 import { calculateCapacityUtilization } from '@/domains/school-setup/services/school-setup';
@@ -23,6 +29,13 @@ export function CampusesTab() {
     toast({
       title: 'Add campus',
       description: 'Campus creation will be enabled in a future update.',
+    });
+  }
+
+  function handleAction(action: string, campusName: string) {
+    toast({
+      title: action,
+      description: `${campusName} — this action will be enabled in a future update.`,
     });
   }
 
@@ -59,7 +72,29 @@ export function CampusesTab() {
                       </p>
                     </div>
                   </div>
-                  <CampusStatusBadge status={campus.status} />
+                  <div className="flex items-center gap-1">
+                    <CampusStatusBadge status={campus.status} />
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon" className="h-7 w-7">
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={() => handleAction('Edit campus', campus.name)}>
+                          <Pencil className="mr-2 h-4 w-4" />
+                          Edit
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => handleAction('Delete campus', campus.name)}
+                          className="text-destructive focus:text-destructive"
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
                 </div>
 
                 {/* Details */}
@@ -86,7 +121,7 @@ export function CampusesTab() {
                 {/* Utilization */}
                 <div className="space-y-2 pt-2 border-t border-border">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Capacity utilization</span>
+                    <span className="text-muted-foreground">Campus utilization</span>
                     <span className="font-medium text-foreground">{utilization}%</span>
                   </div>
                   <ProgressBar
@@ -95,7 +130,7 @@ export function CampusesTab() {
                   />
                   <div className="flex items-center justify-between text-xs text-muted-foreground">
                     <span>{campus.currentStudents.toLocaleString('en-IN')} students</span>
-                    <span>{campus.capacity.toLocaleString('en-IN')} capacity</span>
+                    <span>{campus.capacity.toLocaleString('en-IN')} campus capacity</span>
                   </div>
                 </div>
               </CardContent>

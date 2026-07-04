@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Briefcase, Users, Filter, Search } from 'lucide-react';
+import { Briefcase, Users, Filter, Search, MoreHorizontal, Pencil, Trash2, Plus } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectContent,
@@ -11,10 +12,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { EmptyState } from '@/shared/components/empty-state';
+import { useToast } from '@/hooks/use-toast';
 import { departments } from '@/domains/school-setup/mock-data/departments';
 import { DepartmentStatusBadge } from './badges';
-import type { DepartmentType, DepartmentStatus } from '@/domains/school-setup/types';
+import type { DepartmentType } from '@/domains/school-setup/types';
 
 const departmentTypes: DepartmentType[] = [
   'Academic',
@@ -24,15 +32,8 @@ const departmentTypes: DepartmentType[] = [
   'Support',
 ];
 
-const typeColor: Record<DepartmentType, string> = {
-  Academic: 'bg-primary/10 text-primary',
-  Administrative: 'bg-info/10 text-info',
-  Finance: 'bg-success/10 text-success',
-  Operations: 'bg-warning/10 text-warning',
-  Support: 'bg-muted text-muted-foreground',
-};
-
 export function DepartmentsTab() {
+  const { toast } = useToast();
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [statusFilter, setStatusFilter] = useState<string>('all');
@@ -49,6 +50,20 @@ export function DepartmentsTab() {
       return matchesSearch && matchesType && matchesStatus;
     });
   }, [search, typeFilter, statusFilter]);
+
+  function handleAction(action: string, deptName: string) {
+    toast({
+      title: action,
+      description: `${deptName} — this action will be enabled in a future update.`,
+    });
+  }
+
+  function handleAdd() {
+    toast({
+      title: 'Add department',
+      description: 'Department creation will be enabled in a future update.',
+    });
+  }
 
   return (
     <div className="space-y-4">
@@ -89,6 +104,10 @@ export function DepartmentsTab() {
             </SelectContent>
           </Select>
         </div>
+        <Button variant="outline" size="sm" onClick={handleAdd} className="sm:ml-auto">
+          <Plus className="h-4 w-4 mr-1.5" />
+          Add Department
+        </Button>
       </div>
 
       {/* Department cards */}
@@ -116,7 +135,29 @@ export function DepartmentsTab() {
                       </p>
                     </div>
                   </div>
-                  <DepartmentStatusBadge status={dept.status} />
+                  <div className="flex items-center gap-1">
+                    <DepartmentStatusBadge status={dept.status} />
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon" className="h-7 w-7">
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={() => handleAction('Edit department', dept.name)}>
+                          <Pencil className="mr-2 h-4 w-4" />
+                          Edit
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => handleAction('Delete department', dept.name)}
+                          className="text-destructive focus:text-destructive"
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {dept.description}

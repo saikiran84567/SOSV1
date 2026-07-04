@@ -202,7 +202,7 @@ export function OverviewTab() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Capacity Utilization</CardTitle>
+            <CardTitle className="text-lg">Class Utilization</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center gap-4">
@@ -217,7 +217,7 @@ export function OverviewTab() {
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Current students</p>
+                  <p className="text-xs text-muted-foreground">Class allocation</p>
                   <p className="text-sm font-medium text-foreground">
                     {totalStudents.toLocaleString('en-IN')}
                   </p>
@@ -226,7 +226,7 @@ export function OverviewTab() {
               <div className="flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-muted-foreground" />
                 <div>
-                  <p className="text-xs text-muted-foreground">Total capacity</p>
+                  <p className="text-xs text-muted-foreground">Class capacity</p>
                   <p className="text-sm font-medium text-foreground">
                     {totalCapacity.toLocaleString('en-IN')}
                   </p>
