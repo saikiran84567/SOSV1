@@ -1,0 +1,118 @@
+import type {
+  SchoolProfile,
+  SchoolConfiguration,
+  SetupCompletionItem,
+} from '@/domains/school-setup/types';
+
+export const schoolProfile: SchoolProfile = {
+  id: 'sch-001',
+  name: 'Greenfield International School',
+  code: 'GIS',
+  logoInitials: 'GI',
+  board: 'CBSE',
+  registrationNumber: 'CBSE-AFF-830421',
+  affiliationNumber: '830421',
+  email: 'info@greenfield.edu.in',
+  phone: '+91 80 4567 8900',
+  website: 'www.greenfield.edu.in',
+  address: 'Survey No. 42, Sarjapur Road, Kasavanahalli',
+  city: 'Bengaluru',
+  state: 'Karnataka',
+  country: 'India',
+  postalCode: '560035',
+  principalName: 'Dr. Meera Krishnan',
+  establishedYear: 1998,
+  timezone: 'Asia/Kolkata',
+  currency: 'INR',
+  language: 'English',
+  status: 'active',
+};
+
+export const schoolConfiguration: SchoolConfiguration = {
+  timezone: 'Asia/Kolkata',
+  currency: 'INR',
+  defaultLanguage: 'English',
+  weekStartDay: 'Monday',
+  attendanceMode: 'Period-wise',
+  gradingSystem: 'CBSE 10-point scale',
+  feeCycle: 'Quarterly',
+  notificationPreferences: {
+    email: true,
+    sms: true,
+    push: true,
+    parentPortal: true,
+  },
+};
+
+export const setupChecklist: SetupCompletionItem[] = [
+  {
+    id: 'setup-001',
+    label: 'School profile created',
+    description: 'Basic institution details, board affiliation, and contact information',
+    completed: true,
+    category: 'Institution',
+  },
+  {
+    id: 'setup-002',
+    label: 'Campuses configured',
+    description: 'Main campus and branch campuses with capacity and contact details',
+    completed: true,
+    category: 'Institution',
+  },
+  {
+    id: 'setup-003',
+    label: 'Academic year set up',
+    description: 'Active academic year with terms and instructional days defined',
+    completed: true,
+    category: 'Academics',
+  },
+  {
+    id: 'setup-004',
+    label: 'Departments created',
+    description: 'Academic and administrative departments with heads assigned',
+    completed: true,
+    category: 'Staff',
+  },
+  {
+    id: 'setup-005',
+    label: 'Classes and sections defined',
+    description: 'All grade levels from Nursery to Grade 12 with sections and rooms',
+    completed: true,
+    category: 'Academics',
+  },
+  {
+    id: 'setup-006',
+    label: 'Working days configured',
+    description: 'Weekly schedule with working days, timings, and holidays',
+    completed: true,
+    category: 'Calendar',
+  },
+  {
+    id: 'setup-007',
+    label: 'Grading system configured',
+    description: 'Grade scales, assessment types, and report card templates',
+    completed: false,
+    category: 'Academics',
+  },
+  {
+    id: 'setup-008',
+    label: 'Fee structure defined',
+    description: 'Fee categories, payment cycles, and concession policies',
+    completed: false,
+    category: 'Finance',
+  },
+  {
+    id: 'setup-009',
+    label: 'Timetable generated',
+    description: 'Class-wise timetables with teacher and room assignments',
+    completed: false,
+    category: 'Academics',
+  },
+  {
+    id: 'setup-010',
+    label: 'Parent portal enabled',
+    description: 'Parent accounts, communication preferences, and access policies',
+    completed: false,
+    category: 'Communication',
+  },
+];
