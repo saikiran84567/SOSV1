@@ -156,19 +156,19 @@ export function StudentsTab({ onSelectStudent }: StudentsTabProps) {
     <div className="space-y-4">
       {/* Filters */}
       <div className="flex flex-col gap-3">
-        <div className="relative">
+        <div className="relative w-full">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder="Search by student name, admission number, roll number, or guardian..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-9 max-w-md"
+            className="pl-9"
           />
         </div>
         <div className="flex items-center gap-2 flex-wrap">
           <Filter className="h-4 w-4 text-muted-foreground shrink-0" />
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-[140px]">
+            <SelectTrigger className="w-[130px]">
               <SelectValue placeholder="All statuses" />
             </SelectTrigger>
             <SelectContent>
@@ -179,7 +179,7 @@ export function StudentsTab({ onSelectStudent }: StudentsTabProps) {
             </SelectContent>
           </Select>
           <Select value={classFilter} onValueChange={setClassFilter}>
-            <SelectTrigger className="w-[140px]">
+            <SelectTrigger className="w-[130px]">
               <SelectValue placeholder="All classes" />
             </SelectTrigger>
             <SelectContent>
@@ -190,7 +190,7 @@ export function StudentsTab({ onSelectStudent }: StudentsTabProps) {
             </SelectContent>
           </Select>
           <Select value={campusFilter} onValueChange={setCampusFilter}>
-            <SelectTrigger className="w-[160px]">
+            <SelectTrigger className="w-[140px]">
               <SelectValue placeholder="All campuses" />
             </SelectTrigger>
             <SelectContent>
@@ -201,8 +201,8 @@ export function StudentsTab({ onSelectStudent }: StudentsTabProps) {
             </SelectContent>
           </Select>
           <Select value={admissionFilter} onValueChange={setAdmissionFilter}>
-            <SelectTrigger className="w-[160px]">
-              <SelectValue placeholder="Admission status" />
+            <SelectTrigger className="w-[140px]">
+              <SelectValue placeholder="Admission" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All admission</SelectItem>
@@ -212,8 +212,8 @@ export function StudentsTab({ onSelectStudent }: StudentsTabProps) {
             </SelectContent>
           </Select>
           <Select value={enrollmentFilter} onValueChange={setEnrollmentFilter}>
-            <SelectTrigger className="w-[150px]">
-              <SelectValue placeholder="Enrollment status" />
+            <SelectTrigger className="w-[140px]">
+              <SelectValue placeholder="Enrollment" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All enrollment</SelectItem>
@@ -235,19 +235,19 @@ export function StudentsTab({ onSelectStudent }: StudentsTabProps) {
         <Card>
           <CardContent className="p-0">
             <div className="overflow-x-auto">
-              <Table>
+              <Table className="min-w-[900px]">
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Student</TableHead>
-                    <TableHead className="hidden md:table-cell">Admission No.</TableHead>
-                    <TableHead className="hidden lg:table-cell">Roll No.</TableHead>
-                    <TableHead className="hidden md:table-cell">Class</TableHead>
-                    <TableHead className="hidden lg:table-cell">Campus</TableHead>
-                    <TableHead className="hidden xl:table-cell">Guardian</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead className="hidden lg:table-cell">Admission</TableHead>
-                    <TableHead className="hidden xl:table-cell">Enrollment</TableHead>
-                    <TableHead className="hidden lg:table-cell">Updated</TableHead>
+                    <TableHead className="min-w-[180px]">Student</TableHead>
+                    <TableHead className="hidden md:table-cell min-w-[120px]">Admission No.</TableHead>
+                    <TableHead className="hidden lg:table-cell min-w-[90px]">Roll No.</TableHead>
+                    <TableHead className="hidden md:table-cell min-w-[120px]">Class</TableHead>
+                    <TableHead className="hidden lg:table-cell min-w-[140px]">Campus</TableHead>
+                    <TableHead className="hidden xl:table-cell min-w-[130px]">Guardian</TableHead>
+                    <TableHead className="min-w-[90px]">Status</TableHead>
+                    <TableHead className="hidden lg:table-cell min-w-[110px]">Admission</TableHead>
+                    <TableHead className="hidden xl:table-cell min-w-[100px]">Enrollment</TableHead>
+                    <TableHead className="hidden lg:table-cell min-w-[90px]">Updated</TableHead>
                     <TableHead className="w-[50px]"></TableHead>
                   </TableRow>
                 </TableHeader>

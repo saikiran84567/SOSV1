@@ -69,7 +69,7 @@ export function StudentProfileDrawer({
           <SheetTitle className="sr-only">{student.displayName}</SheetTitle>
         </SheetHeader>
 
-        <div className="mt-2 space-y-6">
+        <div className="mt-2 space-y-6 pb-8">
           {/* Identity header */}
           <div className="flex items-start gap-4">
             <Avatar className="h-16 w-16">

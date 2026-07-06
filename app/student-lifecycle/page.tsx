@@ -66,7 +66,7 @@ export default function StudentLifecyclePage() {
       accent: 'primary',
     },
     {
-      label: 'Transfers/Withdrawals',
+      label: 'Transfers/Exits',
       value: String(stats.transfersWithdrawals),
       change: 'This academic year',
       trend: 'neutral',
@@ -87,7 +87,7 @@ export default function StudentLifecyclePage() {
         description="Manage the complete student journey from inquiry and admission to enrollment, active schooling, transfer, withdrawal, and alumni records. Track guardians, documents, class assignments, and lifecycle events."
       />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {statItems.map((stat) => (
           <StatCard key={stat.label} stat={stat} />
         ))}

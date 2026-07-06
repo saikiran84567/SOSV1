@@ -112,14 +112,16 @@ export function DocumentsTab() {
         </Card>
         <Card>
           <CardContent className="p-4">
-            <p className="text-sm text-muted-foreground">Submitted (pending verification)</p>
+            <p className="text-sm text-muted-foreground">Pending Verification</p>
             <p className="text-2xl font-semibold text-info mt-1">{totalSubmitted}</p>
+            <p className="text-xs text-muted-foreground mt-1">Submitted, awaiting review</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-4">
             <p className="text-sm text-muted-foreground">Not Submitted</p>
             <p className="text-2xl font-semibold text-warning mt-1">{totalPending}</p>
+            <p className="text-xs text-muted-foreground mt-1">Required docs still missing</p>
           </CardContent>
         </Card>
       </div>

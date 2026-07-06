@@ -22,7 +22,8 @@ const pipelineStages: AdmissionStatus[] = [
 export function AdmissionsPipelineTab() {
   return (
     <div className="space-y-4">
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin">
+      <div className="overflow-x-auto pb-4 scrollbar-thin">
+        <div className="flex gap-4 min-w-max">
         {pipelineStages.map((stage) => {
           const apps = admissionApplications.filter((a) => a.currentStage === stage);
           return (
@@ -95,6 +96,7 @@ export function AdmissionsPipelineTab() {
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );
