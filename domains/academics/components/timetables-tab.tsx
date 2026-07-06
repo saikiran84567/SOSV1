@@ -35,6 +35,17 @@ export function TimetablesTab() {
 
   const totalPeriods = timetable ? calculateTotalTeachingPeriods(timetable) : 0;
 
+  const sortedSchedule = useMemo(() => {
+    if (!timetable) return null;
+    const result = {} as typeof timetable.schedule;
+    for (const day of days) {
+      result[day] = [...timetable.schedule[day]].sort((a, b) =>
+        a.startTime.localeCompare(b.startTime)
+      );
+    }
+    return result;
+  }, [timetable]);
+
   function handleClassChange(value: string) {
     setSelectedClass(value);
     const firstSection = sectionOptions.find((s) => s.classGradeId === value);
@@ -168,13 +179,13 @@ export function TimetablesTab() {
                     ))}
 
                     {/* Period rows */}
-                    {timetable.schedule.Monday.map((_, periodIdx) => (
+                    {sortedSchedule!.Monday.map((_, periodIdx) => (
                       <>
                         <div key={`time-${periodIdx}`} className="text-xs text-muted-foreground flex items-center justify-end pr-2">
-                          {timetable.schedule.Monday[periodIdx].startTime}
+                          {sortedSchedule!.Monday[periodIdx].startTime}
                         </div>
                         {days.map((day) => {
-                          const period = timetable.schedule[day][periodIdx];
+                          const period = sortedSchedule![day][periodIdx];
                           return (
                             <div key={`${day}-${periodIdx}`}>
                               {renderPeriod(period)}
