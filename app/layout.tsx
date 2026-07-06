@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     'A unified platform for managing school operations across admissions, academics, finance, staff, communication, and analytics.',
 };
 
+import { StoreProvider } from '@/store';
+
 export default function RootLayout({
   children,
 }: {
@@ -19,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AppShell>{children}</AppShell>
+        <StoreProvider>
+          <AppShell>{children}</AppShell>
+        </StoreProvider>
       </body>
     </html>
   );
