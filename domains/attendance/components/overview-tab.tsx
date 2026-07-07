@@ -1,6 +1,6 @@
 'use client';
 
-import { Users, UserCheck, AlertTriangle, Clock, CheckCircle, XCircle, CalendarCheck, ClipboardList, FileWarning, Bell } from 'lucide-react';
+import { Users, UserCheck, TriangleAlert as AlertTriangle, Clock, CircleCheck as CheckCircle, Circle as XCircle, CalendarCheck, ClipboardList, FileWarning, Bell } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { SectionHeader } from '@/shared/components/section-header';

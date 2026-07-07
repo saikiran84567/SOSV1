@@ -1,14 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import {
-  Search,
-  Eye,
-  MoreHorizontal,
-  Clock,
-  Calendar,
-  Filter,
-} from 'lucide-react';
+import { Search, Eye, MoveHorizontal as MoreHorizontal, Clock, Calendar, Filter } from 'lucide-react';
 import {
   Table,
   TableBody,

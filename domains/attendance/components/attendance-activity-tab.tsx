@@ -3,19 +3,7 @@
 import { useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import {
-  CheckCircle,
-  XCircle,
-  AlertTriangle,
-  Info,
-  Clock,
-  UserCheck,
-  CalendarCheck,
-  FileWarning,
-  Lock,
-  Bell,
-  Mail,
-} from 'lucide-react';
+import { CircleCheck as CheckCircle, Circle as XCircle, TriangleAlert as AlertTriangle, Info, Clock, UserCheck, CalendarCheck, FileWarning, Lock, Bell, Mail } from 'lucide-react';
 import { attendanceActivityEvents } from '@/domains/attendance/mock-data/attendance';
 import type { AttendanceActivityEvent } from '@/domains/attendance/types';
 

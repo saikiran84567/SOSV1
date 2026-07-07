@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Users, UserCheck, AlertTriangle, FileWarning, ClipboardList, CalendarDays, TrendingUp, Activity } from 'lucide-react';
+import { Users, UserCheck, TriangleAlert as AlertTriangle, FileWarning, ClipboardList, CalendarDays, TrendingUp, Activity } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PageHeader } from '@/shared/components/page-header';
 import { StatCard } from '@/shared/components/stat-card';
